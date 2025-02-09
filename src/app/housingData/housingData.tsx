@@ -1,6 +1,6 @@
 "use client"
 
-import Header from "../app/components/header";
+import Header from "../components/header";
 
 // Define the TypeScript interface for the expected data.
 export interface HousingDataType {

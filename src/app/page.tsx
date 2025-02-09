@@ -6,6 +6,7 @@ import Image from "next/image";
 import Header from "./components/header";
 import SearchBar from "./components/searchBar";
 import Link from "next/link";
+import HousingData from "@/housingData/housingData";
 
 export default function Home() {
   const [showImage, setShowImage] = useState(true);

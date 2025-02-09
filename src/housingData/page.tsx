@@ -3,7 +3,7 @@
 
 import React from 'react';
 // Adjust the import path based on your file structure:
-import HousingData from '../app/front-end/components/housingData/housingData';
+import HousingData from './housingData';
 
 export default function HousingDataPage() {
   return (

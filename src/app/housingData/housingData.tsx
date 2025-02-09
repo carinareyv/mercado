@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import Header from "../app/components/header";
+import Header from "../components/header";
 
 // Define the TypeScript interface for the expected data.
 export interface HousingDataType {
@@ -32,7 +32,8 @@ export default async function HousingData() {
       <div className="min-h-screen container mx-auto px-4 py-8 font-montserrat">
         <h1 className="text-[18px] font-extrabold text-center mb-8">
           Housing Data
-          </h1>
+        </h1>
+
         <></>
         {Object.keys(groupedData).map((borough) => {
           // Filter out entries where the project_name is "CONFIDENTIAL" (case insensitive)
@@ -45,7 +46,7 @@ export default async function HousingData() {
 
           return (
             <div key={borough} className="mb-12">
-              <h2 className="text-[14px] font-extrabold mb-4">Borough: {borough}</h2>
+            <h2 className="text-2xl font-extrabold mb-4 uppercase">{borough}</h2> {/* Borough in larger bold letters */}
               <ul className="space-y-4">
                 {filteredData.map((housingData, index) => (
                   <li key={index} className="pb-5 border-b border-gray-300">

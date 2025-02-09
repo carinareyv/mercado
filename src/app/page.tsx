@@ -6,6 +6,7 @@ import Image from "next/image";
 import Header from "./components/header";
 import SearchBar from "./components/searchBar";
 import Link from "next/link";
+
 import CategoryCard from "./components/categoryCard";
 import router from "next/router";
 
@@ -19,6 +20,7 @@ const categories = [
   { id: 7, name: "Legal Aid", imageUrl: "/securityLogoCategory.png" },
   { id: 8, name: "Social Services", imageUrl: "/securityLogoCategory.png" },
 ];
+
 
 export default function Home() {
   const [showImage, setShowImage] = useState(true);

@@ -5,6 +5,19 @@ import Image from "next/image";
 import Header from "./components/header";
 import SearchBar from "./components/searchBar";
 import Link from "next/link";
+import CategoryCard from "./components/categoryCard";
+import router from "next/router";
+
+const categories = [
+  { id: 1, name: "Community & Culture", imageUrl: "/securityLogoCategory.png" },
+  { id: 2, name: "Education", imageUrl: "/securityLogoCategory.png" },
+  { id: 3, name: "Employment", imageUrl: "/securityLogoCategory.png" },
+  { id: 4, name: "Events", imageUrl: "/securityLogoCategory.png" },
+  { id: 5, name: "Health", imageUrl: "/securityLogoCategory.png" },
+  { id: 6, name: "Housing", imageUrl: "/securityLogoCategory.png" },
+  { id: 7, name: "Legal Aid", imageUrl: "/securityLogoCategory.png" },
+  { id: 8, name: "Social Services", imageUrl: "/securityLogoCategory.png" },
+];
 
 export default function Home() {
   const [showImage, setShowImage] = useState(true);
@@ -15,6 +28,8 @@ export default function Home() {
     setSearchQuery(query);
   };
 
+
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowImage(false);
@@ -22,6 +37,12 @@ export default function Home() {
 
     return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
+
+
+  const handleCategoryClick = (categoryName: string) => {
+    console.log(`Selected Category: ${categoryName}`);
+    router.push(`/category/${categoryName.toLowerCase()}`);
+  };
   return (
     <>
       {showImage ? (
@@ -40,7 +61,7 @@ export default function Home() {
               height={78}
               className="mt=4"
             />
-            <p>Su seguridad en NY, primero</p>
+            <p>su seguridad en NY, primero</p>
           </div>
         </div>
       ) : (
@@ -59,6 +80,16 @@ export default function Home() {
               />
             </Link>
             <h1 className="text-xl items-start">Categories</h1>
+            <div className="grid grid-cols-2 gap-4 justify-center">
+            {categories.map((category) => (
+          <CategoryCard
+            key={category.id}
+            name={category.name}
+            imageUrl={category.imageUrl}
+            onClick={() => handleCategoryClick(category.name)}
+          />
+        ))}
+            </div>
           </div>
         </>
       )}

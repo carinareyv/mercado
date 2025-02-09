@@ -1,14 +1,18 @@
 import Header from "./components/header";
+import HousingData from "./front-end/components/housingData/housingData";
+
 
 export default async function Home() {
   return (
-    <div>
-      <Header />
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 ">
-        <h1>HELLO!!!!!</h1>
-
-
-      </div>
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+   <h1>HELLO</h1>
+     <ul>
+      {posts.map((post: BoilerData) => (
+        <li key={post.project_id}>{post.project_name}</li>
+      ))}
+    </ul>
+    <HousingData/>
+      
     </div>
   );
 }

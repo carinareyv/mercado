@@ -1,4 +1,7 @@
 // src/app/components/HousingData.tsx
+
+"use client";
+
 import React, { useEffect, useState } from 'react';
 
 // Define the TypeScript interface for the expected data.
@@ -19,8 +22,7 @@ const HousingData: React.FC = () => {
   useEffect(() => {
     const fetchAddresses = async () => {
       try {
-        // Use the custom API route defined in your back-end folder.
-        const response = await fetch('/back-end/housingData');
+        const response = await fetch('https://data.cityofnewyork.us/resource/hg8x-zxpr.json');
         if (!response.ok) {
           throw new Error(`Error fetching addresses: ${response.statusText}`);
         }

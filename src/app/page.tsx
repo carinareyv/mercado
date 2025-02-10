@@ -12,48 +12,54 @@ import { useRouter } from "next/navigation";
 const categories = [
   {
     id: 1,
+    name: "experts",
+    label: "Consult with experts",
+    imageUrl: "/Users.png",
+  },
+  {
+    id: 2,
     name: "communityCulture",
     label: "Community & Culture",
     imageUrl: "/securityLogoCategory.png",
   },
   {
-    id: 2,
+    id: 3,
     name: "education",
     label: "Education",
     imageUrl: "/securityLogoCategory.png",
   },
   {
-    id: 3,
+    id: 4,
     name: "employment",
     label: "Employment",
     imageUrl: "/securityLogoCategory.png",
   },
   {
-    id: 4,
+    id: 5,
     name: "events",
     label: "Events",
     imageUrl: "/securityLogoCategory.png",
   },
   {
-    id: 5,
+    id: 6,
     name: "health",
     label: "Health",
     imageUrl: "/securityLogoCategory.png",
   },
   {
-    id: 6,
+    id: 7,
     name: "housing",
     label: "Housing",
     imageUrl: "/securityLogoCategory.png",
   },
   {
-    id: 7,
+    id: 8,
     name: "legalAid",
     label: "Legal Aid",
     imageUrl: "/securityLogoCategory.png",
   },
   {
-    id: 8,
+    id: 9,
     name: "socialServices",
     label: "Social Services",
     imageUrl: "/securityLogoCategory.png",
@@ -127,7 +133,7 @@ export default function Home() {
               />
             </Link>
             <h1 className="text-xl items-start">Categories</h1>
-            <div className="grid grid-cols-2 gap-4 justify-center">
+            <div className="grid grid-cols-2 gap-4 justify-center items-center">
               {categories.map((category) => (
                 <CategoryCard
                   key={category.id}

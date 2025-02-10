@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Header from "../components/header";
+import Header from "../../components/header";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 

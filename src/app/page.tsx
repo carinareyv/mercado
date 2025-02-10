@@ -1,4 +1,3 @@
-
 "use client";
 import { useEffect, useState } from "react";
 //import Header from "./components/header";
@@ -11,22 +10,61 @@ import CategoryCard from "./components/categoryCard";
 import { useRouter } from "next/navigation";
 
 const categories = [
-  { id: 1, name: "Community & Culture", imageUrl: "/securityLogoCategory.png" },
-  { id: 2, name: "Education", imageUrl: "/securityLogoCategory.png" },
-  { id: 3, name: "Employment", imageUrl: "/securityLogoCategory.png" },
-  { id: 4, name: "Events", imageUrl: "/securityLogoCategory.png" },
-  { id: 5, name: "Health", imageUrl: "/securityLogoCategory.png" },
-  { id: 6, name: "Housing", imageUrl: "/securityLogoCategory.png" },
-  { id: 7, name: "Legal Aid", imageUrl: "/securityLogoCategory.png" },
-  { id: 8, name: "Social Services", imageUrl: "/securityLogoCategory.png" },
+  {
+    id: 1,
+    name: "communityCulture",
+    label: "Community & Culture",
+    imageUrl: "/securityLogoCategory.png",
+  },
+  {
+    id: 2,
+    name: "education",
+    label: "Education",
+    imageUrl: "/securityLogoCategory.png",
+  },
+  {
+    id: 3,
+    name: "employment",
+    label: "Employment",
+    imageUrl: "/securityLogoCategory.png",
+  },
+  {
+    id: 4,
+    name: "events",
+    label: "Events",
+    imageUrl: "/securityLogoCategory.png",
+  },
+  {
+    id: 5,
+    name: "health",
+    label: "Health",
+    imageUrl: "/securityLogoCategory.png",
+  },
+  {
+    id: 6,
+    name: "housing",
+    label: "Housing",
+    imageUrl: "/securityLogoCategory.png",
+  },
+  {
+    id: 7,
+    name: "legalAid",
+    label: "Legal Aid",
+    imageUrl: "/securityLogoCategory.png",
+  },
+  {
+    id: 8,
+    name: "socialServices",
+    label: "Social Services",
+    imageUrl: "/securityLogoCategory.png",
+  },
 ];
 
-const categoryRouteMapping: { [key: string]: string } = {
-  education: "schoolsByZone",
-  housing: "housingData",
-  "social services": "socialServices",
-};
-
+// const categoryRouteMapping: { [key: string]: string } = {
+//   education: "schoolsByZone",
+//   housing: "housingData",
+//   "social services": "socialServices",
+// };
 
 export default function Home() {
   const [showImage, setShowImage] = useState(true);
@@ -38,8 +76,6 @@ export default function Home() {
     setSearchQuery(query);
   };
 
-
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowImage(false);
@@ -48,13 +84,11 @@ export default function Home() {
     return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
 
-  
-
   const handleCategoryClick = (categoryName: string) => {
-    const lowerName = categoryName.toLowerCase();
-    const routeSegment = categoryRouteMapping[lowerName] || lowerName;
-    console.log(`Navigating to /category/${routeSegment}`);
-    router.push(`/category/${routeSegment}`);
+    //const lowerName = categoryName.toLowerCase();
+    //const routeSegment = categoryRouteMapping[lowerName] || lowerName;
+   // console.log(`Navigating to /category/${routeSegment}`);
+    router.push(`${categoryName}`);
   };
   return (
     <>
@@ -94,15 +128,14 @@ export default function Home() {
             </Link>
             <h1 className="text-xl items-start">Categories</h1>
             <div className="grid grid-cols-2 gap-4 justify-center">
-            {categories.map((category) => (
-          <CategoryCard
-            key={category.id}
-            name={category.name}
-            imageUrl={category.imageUrl}
-            onClick={() => handleCategoryClick(category.name)}
-          />
-          
-        ))}
+              {categories.map((category) => (
+                <CategoryCard
+                  key={category.id}
+                  name={category.label}
+                  imageUrl={category.imageUrl}
+                  onClick={() => handleCategoryClick(category.name)}
+                />
+              ))}
             </div>
           </div>
         </>

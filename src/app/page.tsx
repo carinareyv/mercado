@@ -8,7 +8,7 @@ import SearchBar from "./components/searchBar";
 import Link from "next/link";
 
 import CategoryCard from "./components/categoryCard";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 
 const categories = [
   { id: 1, name: "Community & Culture", imageUrl: "/securityLogoCategory.png" },
@@ -21,10 +21,17 @@ const categories = [
   { id: 8, name: "Social Services", imageUrl: "/securityLogoCategory.png" },
 ];
 
+const categoryRouteMapping: { [key: string]: string } = {
+  education: "schoolsByZone",
+  housing: "housingData",
+  "social services": "socialServices",
+};
+
 
 export default function Home() {
   const [showImage, setShowImage] = useState(true);
   const [, setSearchQuery] = useState("");
+  const router = useRouter();
 
   const handleSearch = (query: string) => {
     console.log("Searching for category: ", query);
@@ -41,10 +48,13 @@ export default function Home() {
     return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
 
+  
 
   const handleCategoryClick = (categoryName: string) => {
-    console.log(`Selected Category: ${categoryName}`);
-    router.push(`/category/${categoryName.toLowerCase()}`);
+    const lowerName = categoryName.toLowerCase();
+    const routeSegment = categoryRouteMapping[lowerName] || lowerName;
+    console.log(`Navigating to /category/${routeSegment}`);
+    router.push(`/category/${routeSegment}`);
   };
   return (
     <>
@@ -91,6 +101,7 @@ export default function Home() {
             imageUrl={category.imageUrl}
             onClick={() => handleCategoryClick(category.name)}
           />
+          
         ))}
             </div>
           </div>
